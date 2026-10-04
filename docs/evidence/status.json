@@ -1,0 +1,32 @@
+{
+  "source_stage": "post-restoration",
+  "node_tests": {
+    "passed": 104,
+    "failed": 0
+  },
+  "oracle_default": {
+    "passed": 1183
+  },
+  "oracle_expanded_seed_42": {
+    "passed": 3244
+  },
+  "consumer_standard": "passed semantic/HTML; native explicitly skipped",
+  "consumer_adversarial": "passed semantic/HTML; native explicitly skipped",
+  "consumer_corruption_controls": {
+    "rejected": 19
+  },
+  "browser": {
+    "authored_scenarios": 20,
+    "execution": "pending hosted CI",
+    "sandbox_required": true
+  },
+  "native_libreoffice": "pending hosted CI; earlier local conversion exited 137",
+  "visual_review": "pending actual browser screenshots and A4 PDF inspection",
+  "publication": "not performed",
+  "project_license": "not selected",
+  "review_fixes": [
+    "Malformed UTF-16 rejected",
+    "Stale import success/failure ignored; input immediately cleared for reselection",
+    "CRLF and CR canonicalized to LF across model and handoff"
+  ]
+}

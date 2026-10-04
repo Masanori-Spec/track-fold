@@ -1,0 +1,80 @@
+{
+  "consumer": "TrackFold independent handoff verifier v1",
+  "created_utc": "2026-10-04T12:41:08.511283+00:00",
+  "bundle": "test-results/local/handoff.zip",
+  "status": "passed",
+  "solver_imported": false,
+  "optimality_rechecked": false,
+  "native_libreoffice": {
+    "available": true,
+    "required": false,
+    "skip_requested": true,
+    "status": "skipped",
+    "reason": "Explicit --skip-libreoffice; no native application executed"
+  },
+  "bundle_sha256": "67b0643be95bffd7301d146d8be8fef265e4a10f3c49b00e13d5369bb6ec1831",
+  "members": {
+    "assumptions.txt": {
+      "bytes": 995,
+      "sha256": "9915cbd5758944a0fdd595637f7b3394718a8bcc1f9a71f0895a9a2c5db858d3"
+    },
+    "recipe.json": {
+      "bytes": 1064,
+      "sha256": "ca036903c03d29c1601042c72108005e5541dfe32c4fce05b7f9d859a396a684"
+    },
+    "role-tracks.csv": {
+      "bytes": 157,
+      "sha256": "b4f7f6f598a48709cd744c31f7637ef4f613c3953eaefbc1335c8594d4e30014"
+    },
+    "run-sheet.html": {
+      "bytes": 4333,
+      "sha256": "266c1e9253228d05f9c55cef4564f33c25fdfc3e6154fde9e7576e202ee433bf"
+    },
+    "track-appearances.csv": {
+      "bytes": 303,
+      "sha256": "71f4e94400f514d6dea5a614641f90c18e9edd677694a59fafefa8290eaf8268"
+    },
+    "track-transitions.csv": {
+      "bytes": 256,
+      "sha256": "64af72fe636943fb11e6277a6df06fd12b45a1a6e94414e3dda922d066149c38"
+    }
+  },
+  "csv_semantics": {
+    "status": "passed",
+    "roles": 4,
+    "appearances": 5,
+    "tracks": 3,
+    "consecutive_transitions": 2,
+    "formula_prefixed_text_fields": 0,
+    "non_ascii_text_fields": 1,
+    "must_share_groups": 0,
+    "never_share_pairs": 0,
+    "transition_coverage": {
+      "same_role_zero": 0,
+      "directed_override": 0,
+      "default_changeover": 2,
+      "equality_boundary": 0
+    },
+    "tables": {
+      "role-tracks.csv": {
+        "rows_including_header": 5,
+        "columns": 4
+      },
+      "track-appearances.csv": {
+        "rows_including_header": 6,
+        "columns": 6
+      },
+      "track-transitions.csv": {
+        "rows_including_header": 3,
+        "columns": 10
+      }
+    }
+  },
+  "html_and_assumptions": {
+    "status": "passed",
+    "track_sections": 3,
+    "appearance_rows": 5,
+    "static_only": true
+  },
+  "elapsed_seconds": 0.002
+}

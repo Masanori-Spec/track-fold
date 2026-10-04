@@ -1,0 +1,23 @@
+{
+  "name": "track-fold",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Exact anonymous theatre role-track planner with reviewable transition handoffs",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run build && npm test && node scripts/check.mjs",
+    "serve": "node scripts/serve.mjs",
+    "test:oracle": "python3 tests/oracle.py",
+    "test:browser": "node tests/browser/browser-test.mjs",
+    "test:consumer": "node scripts/export-example.mjs && python3 tests/consume.py --bundle test-results/local/handoff.zip --out test-results/consumer --skip-libreoffice",
+    "package": "python3 scripts/package.py"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.0"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "direct_LF_cases": 4,
+  "direct_CR_cases": 3,
+  "actual_native_execution": false,
+  "checks": [
+    {
+      "case": "line-ending-name-cr",
+      "status": "rejected cleanly",
+      "error": "VerificationError: Role A name: noncanonical carriage return; exported text must use LF line endings"
+    },
+    {
+      "case": "line-ending-name-crlf",
+      "status": "rejected cleanly",
+      "error": "VerificationError: Role A name: noncanonical carriage return; exported text must use LF line endings"
+    },
+    {
+      "case": "line-ending-cue-cr",
+      "status": "rejected cleanly",
+      "error": "VerificationError: Appearance A1 cue: noncanonical carriage return; exported text must use LF line endings"
+    },
+    {
+      "case": "line-ending-cue-crlf",
+      "status": "rejected cleanly",
+      "error": "VerificationError: Appearance A1 cue: noncanonical carriage return; exported text must use LF line endings"
+    }
+  ]
+}

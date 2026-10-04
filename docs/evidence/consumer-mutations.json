@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "mutation": "duplicate-role",
+      "status": "rejected",
+      "reason": "VerificationError: Each role must occur once in role CSV"
+    },
+    {
+      "mutation": "missing-appearance",
+      "status": "rejected",
+      "reason": "VerificationError: Each appearance must occur exactly once"
+    },
+    {
+      "mutation": "duplicate-appearance",
+      "status": "rejected",
+      "reason": "VerificationError: Each appearance must occur exactly once"
+    },
+    {
+      "mutation": "noncontiguous-track",
+      "status": "rejected",
+      "reason": "VerificationError: Track IDs must be contiguous T1…Tn"
+    },
+    {
+      "mutation": "formula-prefix-removed",
+      "status": "rejected",
+      "reason": "VerificationError: Role A: name, Unicode or formula escaping differs"
+    },
+    {
+      "mutation": "unicode-damaged",
+      "status": "rejected",
+      "reason": "VerificationError: Appearance CSV differs from recipe, track, chronological order, Unicode or escaping"
+    },
+    {
+      "mutation": "wrong-appearance-time",
+      "status": "rejected",
+      "reason": "VerificationError: Appearance CSV differs from recipe, track, chronological order, Unicode or escaping"
+    },
+    {
+      "mutation": "missing-transition",
+      "status": "rejected",
+      "reason": "VerificationError: Transition CSV must contain exactly every consecutive pair with correct direction, gap, requirement and slack"
+    },
+    {
+      "mutation": "extra-transition",
+      "status": "rejected",
+      "reason": "VerificationError: Transition CSV must contain exactly every consecutive pair with correct direction, gap, requirement and slack"
+    },
+    {
+      "mutation": "wrong-gap",
+      "status": "rejected",
+      "reason": "VerificationError: Transition CSV must contain exactly every consecutive pair with correct direction, gap, requirement and slack"
+    },
+    {
+      "mutation": "wrong-required",
+      "status": "rejected",
+      "reason": "VerificationError: Transition CSV must contain exactly every consecutive pair with correct direction, gap, requirement and slack"
+    },
+    {
+      "mutation": "wrong-slack",
+      "status": "rejected",
+      "reason": "VerificationError: Transition CSV must contain exactly every consecutive pair with correct direction, gap, requirement and slack"
+    },
+    {
+      "mutation": "must-share-violated",
+      "status": "rejected",
+      "reason": "VerificationError: mustShare violated: ['A', 'D']"
+    },
+    {
+      "mutation": "never-share-violated",
+      "status": "rejected",
+      "reason": "VerificationError: neverShare violated: A, B"
+    },
+    {
+      "mutation": "html-cue-damaged",
+      "status": "rejected",
+      "reason": "VerificationError: HTML T1: appearances, times, cues or escaping differ"
+    },
+    {
+      "mutation": "html-script",
+      "status": "rejected",
+      "reason": "VerificationError: Active/external HTML element: script"
+    },
+    {
+      "mutation": "no-bom",
+      "status": "rejected",
+      "reason": "VerificationError: role-tracks.csv: UTF-8 BOM missing"
+    },
+    {
+      "mutation": "unexpected-path",
+      "status": "rejected",
+      "reason": "VerificationError: ZIP member mismatch: missing=[], extra=['../outside.txt']"
+    },
+    {
+      "mutation": "overlap",
+      "status": "rejected",
+      "reason": "VerificationError: Track T1: overlap A1 / A2"
+    },
+    {
+      "mutation": "missing-native-optional",
+      "status": "passed"
+    },
+    {
+      "mutation": "missing-native-required",
+      "status": "passed"
+    }
+  ],
+  "actual_native_execution": false
+}

@@ -1,0 +1,2 @@
+Independent oracle passed: {"fixture": 27, "generated": 1000, "infeasible": 1080, "metamorphic": 2217, "seed": 42, "total": 3244}
+Verified exact minima, feasibility, target flags, complete assignments, and every transition field; object and array adapters passed.

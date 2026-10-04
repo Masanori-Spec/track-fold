@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "actual_native_execution": false,
+  "checks": [
+    {
+      "case": "direct malformed high/low surrogate strings",
+      "count": 10,
+      "status": "passed"
+    },
+    {
+      "case": "valid astral Unicode and UTF-16 length boundary",
+      "count": 9,
+      "status": "passed"
+    },
+    {
+      "case": "surrogate-name-high",
+      "status": "rejected cleanly",
+      "error": "VerificationError: Role A name: unpaired Unicode surrogate"
+    },
+    {
+      "case": "surrogate-name-low",
+      "status": "rejected cleanly",
+      "error": "VerificationError: Role A name: unpaired Unicode surrogate"
+    },
+    {
+      "case": "surrogate-cue-high",
+      "status": "rejected cleanly",
+      "error": "VerificationError: Appearance A1 cue: unpaired Unicode surrogate"
+    },
+    {
+      "case": "surrogate-cue-low",
+      "status": "rejected cleanly",
+      "error": "VerificationError: Appearance A1 cue: unpaired Unicode surrogate"
+    },
+    {
+      "case": "recipe astral text preserved as literal UTF-8 and escaped UTF-16 pairs",
+      "count": 2,
+      "status": "passed"
+    }
+  ]
+}

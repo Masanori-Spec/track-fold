@@ -1,0 +1,85 @@
+{
+  "modelVersion": 1,
+  "roles": [
+    {
+      "id": "A",
+      "name": "=1+1"
+    },
+    {
+      "id": "B",
+      "name": "舞台 👘 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+    },
+    {
+      "id": "C",
+      "name": "+Chœur <&>"
+    },
+    {
+      "id": "D",
+      "name": "入口"
+    }
+  ],
+  "appearances": [
+    {
+      "id": "A1",
+      "roleId": "A",
+      "start": 0,
+      "end": 10,
+      "cue": "=1+1"
+    },
+    {
+      "id": "A2",
+      "roleId": "A",
+      "start": 10,
+      "end": 20,
+      "cue": "\t日本語"
+    },
+    {
+      "id": "B1",
+      "roleId": "B",
+      "start": 25,
+      "end": 30,
+      "cue": "comma, \"quote\"\n行 <img src=x onerror=\"window.__injected=true\"> & 日本語 長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長長WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+    },
+    {
+      "id": "C1",
+      "roleId": "C",
+      "start": 40,
+      "end": 50,
+      "cue": "@notformula"
+    },
+    {
+      "id": "D1",
+      "roleId": "D",
+      "start": 0,
+      "end": 50,
+      "cue": "-look"
+    }
+  ],
+  "defaultChangeover": 10,
+  "overrides": [
+    {
+      "from": "A",
+      "to": "B",
+      "seconds": 5
+    },
+    {
+      "from": "B",
+      "to": "A",
+      "seconds": 19
+    }
+  ],
+  "mustShare": [
+    [
+      "A",
+      "B",
+      "C"
+    ]
+  ],
+  "neverShare": [
+    [
+      "A",
+      "D"
+    ]
+  ],
+  "targetTracks": 2
+}

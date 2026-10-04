@@ -1,0 +1,25 @@
+{
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux"
+  },
+  "note": "Single local run. No universal device or browser guarantee.",
+  "cases": [
+    {
+      "name": "16 roles / 128 sequential appearances",
+      "status": "optimal",
+      "minimumTracks": 1,
+      "checks": 8454019,
+      "feasibleSubsets": 65535,
+      "elapsedMs": 124
+    },
+    {
+      "name": "16 simultaneous roles",
+      "status": "optimal",
+      "minimumTracks": 16,
+      "checks": 458699,
+      "feasibleSubsets": 16,
+      "elapsedMs": 19
+    }
+  ]
+}
