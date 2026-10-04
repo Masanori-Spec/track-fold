@@ -38,11 +38,20 @@ label at x=588–589px. Because its containing block was outside the scrolling t
 the label widened the document even though the visible columns were clipped correctly.
 
 The targeted correction positions each table header relatively, keeping its hidden
-label's containing block inside the scrollport. The mobile regression checks both
-accessible remove-column names, their actual containing blocks, document width and
-scroll access to the last columns. Document-level overflow is never hidden.
-Local Node checks still pass. The exact targeted correction's hosted rerun and
-mobile screenshot inspection are pending; this is not a final release pass.
+label's containing block inside the scrollport. In
+[run 37204714690](https://github.com/Masanori-Spec/track-fold/actions/runs/37204714690),
+the screenshot was 390px wide and the containing-block checks passed. The added
+accessibility-role lookup then failed: the hidden-only remove headers had no matching
+columnheader name in the browser role query.
+
+The follow-up makes all editor header scopes explicit, and supplies the remove
+columns with explicit columnheader roles and localized aria-labels while retaining
+their hidden text. Both English and Japanese role/name lookups are regression-checked.
+The mobile test records a normal screenshot before scrolling, a second after reaching
+the last columns, and detailed header diagnostics on any failure. Document-level
+overflow is never hidden. Local Node checks still pass; the exact semantic correction
+and final width/accessibility assertions await hosted rerun. This is not a final
+release pass.
 
 No local browser or further native LibreOffice execution was attempted after the
 local environment failure. No sandbox weakening or shared browser was used.

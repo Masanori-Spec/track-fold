@@ -173,6 +173,7 @@ async function test(name, fn, { viewport = { width: 1440, height: 1080 }, offlin
 try {
   await test('english-keyboard-skip-add-rows', async page => {
     await open(page);
+    assert.equal(await page.getByRole('columnheader', { name: 'Remove', exact: true }).count(), 2, 'English remove-column headers have accessible names');
     await page.keyboard.press('Tab');
     assert.equal(await page.locator('.skip').evaluate(n => n === document.activeElement), true);
     await page.keyboard.press('Enter');
@@ -452,8 +453,15 @@ try {
     })));
     assert.equal(hiddenHeaders.length, 2, 'Both remove-column headers retain their accessible labels');
     assert.ok(hiddenHeaders.every(label => label.text === '削除' && label.contained && label.anchorPosition === 'relative'), 'Offscreen accessible labels are positioned inside their table header, not the document');
-    assert.equal(await page.getByRole('columnheader', { name: '削除', exact: true }).count(), 2);
+    const headerDiagnostics = await page.locator('th[data-i18n-label="remove"]').evaluateAll(headers => headers.map(header => ({
+      html: header.outerHTML, role: header.getAttribute('role'), scope: header.scope,
+      ariaLabel: header.getAttribute('aria-label'), text: header.textContent,
+      display: getComputedStyle(header).display, visibility: getComputedStyle(header).visibility,
+    })));
+    assert.equal(await page.getByRole('columnheader', { name: '削除', exact: true }).count(), 2, `Accessible remove headers: ${JSON.stringify(headerDiagnostics)}`);
+    assert.ok(headerDiagnostics.every(header => header.scope === 'col' && header.role === 'columnheader' && header.ariaLabel === '削除'), 'Explicit column-header semantics and localized labels are retained');
     await noPageOverflow(page);
+    await page.screenshot({ path: path.join(artifactDir, 'japanese-mobile-390.png'), fullPage: true });
     for (const selector of ['.appearances-table', '.transition-table']) {
       const bounds = await page.locator(selector).first().evaluate(table => {
         const port = table.parentElement;
@@ -466,7 +474,7 @@ try {
       assert.equal(bounds.endVisible, true, `${selector} last column can be viewed`);
     }
     await noPageOverflow(page);
-    await page.screenshot({ path: path.join(artifactDir, 'japanese-mobile-390.png'), fullPage: true });
+    await page.screenshot({ path: path.join(artifactDir, 'japanese-mobile-390-scrolled.png'), fullPage: true });
   }, { viewport: { width: 390, height: 844 } });
 
   await test('maximum-128-appearances-single-role', async page => {

@@ -1,5 +1,5 @@
 {
-  "source_stage": "targeted accessible-header containment correction",
+  "source_stage": "explicit remove-column header semantics correction",
   "node_tests": {
     "passed": 104,
     "failed": 0
@@ -17,7 +17,7 @@
   },
   "browser": {
     "authored_scenarios": 20,
-    "execution": "First two hosted runs: 19/20 passed; diagnostic isolated an offscreen absolute sr-only header label. Targeted containing-block correction rerun pending",
+    "execution": "Third hosted run: containing-block checks passed and screenshot width390; header accessible-name lookup failed. Explicit scope/role/localized-label correction rerun pending",
     "sandbox_required": true
   },
   "native_libreoffice": "Initial hosted run passed both actual browser download ZIPs with LibreOffice 7.3.7.2; local native execution remains skipped",
@@ -41,5 +41,12 @@
     "viewport_width": 390,
     "cause": "Absolutely positioned offscreen hidden table-header label lacked an in-scrollport containing block",
     "fix": "position:relative on table-scroll th; preserve label and scrolling"
+  },
+  "mobile_header_semantics": {
+    "run": "https://github.com/Masanori-Spec/track-fold/actions/runs/37204714690",
+    "screenshot_width": 390,
+    "containing_block_assertions": "passed",
+    "role_name_query": "failed 0 matches instead of2",
+    "correction": "Explicit scope=col, columnheader role and translated aria-label; hidden text preserved"
   }
 }
