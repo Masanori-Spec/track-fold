@@ -1,0 +1,105 @@
+name: Verify TrackFold
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-and-independent-oracle:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: npm run check
+      - name: Independent exhaustive-partition oracle
+        run: |
+          python3 tests/oracle.py
+          python3 tests/oracle.py --seed 42 --generated 1000 --metamorphic 250
+      - name: Generate and independently consume CLI bundle
+        run: |
+          node scripts/export-example.mjs
+          python3 tests/consume.py --bundle test-results/local/handoff.zip --out test-results/consumer-cli --skip-libreoffice
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unit-oracle-node-${{ matrix.node }}
+          path: test-results/
+          if-no-files-found: warn
+
+  browser-and-real-consumers:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    env:
+      BASE_PATH: /track-fold/
+      BASE_URL: http://127.0.0.1:4173/track-fold/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - name: Require lockfile-pinned Playwright
+        run: node --input-type=module -e 'import { createRequire } from "node:module"; const require = createRequire(import.meta.url); if (require("@playwright/test/package.json").version !== "1.56.0") throw new Error("Expected pinned Playwright 1.56.0");'
+      - run: npx --no-install playwright install --with-deps chromium
+      - name: Install independent office and PDF consumers
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libreoffice-calc poppler-utils fonts-noto-cjk
+      - run: npm run build
+      - name: Genuine sandboxed Chromium, actual downloads and A4 print
+        run: |
+          mkdir -p test-results/browser
+          npm run serve > test-results/browser/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for i in $(seq 1 30); do
+            if curl --fail --silent "$BASE_URL" > /dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          test "$ready" = 1
+          npm run test:browser
+      - name: Independently parse actual browser ZIP and native CSV import
+        if: ${{ !cancelled() }}
+        run: |
+          python3 tests/consume.py --bundle test-results/browser/downloaded.zip --out test-results/consumer-browser --require-libreoffice
+          python3 tests/consume.py --bundle test-results/browser/hostile-text.zip --out test-results/consumer-hostile --require-libreoffice
+      - name: Render all A4 pages for visual inspection
+        if: ${{ !cancelled() }}
+        run: |
+          mkdir -p test-results/browser/print-pages
+          for stem in downloaded hostile-text; do
+            pdfinfo "test-results/browser/$stem-A4.pdf" > "test-results/browser/print-pages/$stem-pdfinfo.txt"
+            pdftoppm -scale-to 1400 -png "test-results/browser/$stem-A4.pdf" "test-results/browser/print-pages/$stem"
+            pdftotext -layout "test-results/browser/$stem-A4.pdf" "test-results/browser/print-pages/$stem.txt"
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sandbox-browser-and-consumer-evidence
+          path: test-results/
+          if-no-files-found: warn
