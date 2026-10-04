@@ -139,15 +139,19 @@ python3 tests/consume.py --bundle test-results/local/handoff.zip --out test-resu
   seed: 3,244. It does not call the product subset DP
 - CSV consumer independently checks the actual ZIP with Python's `csv` module and,
   where available, LibreOffice CSV→XLSX plus XML cell verification
-- Authored CI uses Ubuntu 22.04, Node 22/24 and **sandbox-enabled Chromium**, including
+- Hosted CI uses Ubuntu 22.04, Node 22/24 and **sandbox-enabled Chromium**, including
   the real browser download, fresh-context standalone HTML, keyboard/mobile flows,
   cancellation, long Unicode text and A4 print evidence
 
 See [oracle method](docs/oracle-method.md), [consumer method](docs/consumer-method.md),
 [verification status](docs/verification.md) and [security scope](SECURITY.md).
-Browser/print checks are not claimed passed until the corresponding exact source
-has run in CI and its screenshots/PDFs have been inspected. No browser sandbox
-bypass is used.
+The [initial hosted run](https://github.com/Masanori-Spec/track-fold/actions/runs/37203726116)
+passed both Node/oracle jobs, 19 of 20 browser scenarios, actual-download
+LibreOffice CSV imports and A4 rendering. All ten rendered A4 pages were inspected.
+The remaining scenario exposed document overflow at a 390px Japanese layout. A
+responsive containment fix and offscreen-column access checks are now applied; the
+exact updated source still needs its hosted rerun and mobile screenshot inspection.
+No browser sandbox bypass is used. These checks do not validate a real production.
 
 ## Repository status
 

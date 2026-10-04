@@ -1,5 +1,5 @@
 {
-  "source_stage": "post-restoration",
+  "source_stage": "responsive correction after initial hosted CI",
   "node_tests": {
     "passed": 104,
     "failed": 0
@@ -17,16 +17,22 @@
   },
   "browser": {
     "authored_scenarios": 20,
-    "execution": "pending hosted CI",
+    "execution": "Initial hosted CI: 19/20 passed; 390px overflow found. Corrected source rerun pending",
     "sandbox_required": true
   },
-  "native_libreoffice": "pending hosted CI; earlier local conversion exited 137",
-  "visual_review": "pending actual browser screenshots and A4 PDF inspection",
-  "publication": "not performed",
+  "native_libreoffice": "Initial hosted run passed both actual browser download ZIPs with LibreOffice 7.3.7.2; local native execution remains skipped",
+  "visual_review": "All ten initial A4 pages inspected; corrected mobile screenshot pending",
+  "publication": "Source repository published for CI; no hosted app deployment",
   "project_license": "not selected",
   "review_fixes": [
     "Malformed UTF-16 rejected",
     "Stale import success/failure ignored; input immediately cleared for reselection",
     "CRLF and CR canonicalized to LF across model and handoff"
-  ]
+  ],
+  "initial_ci": {
+    "url": "https://github.com/Masanori-Spec/track-fold/actions/runs/37203726116",
+    "commit": "431b4699ddb2983dbc2516afeda7744a47ce6868",
+    "node22": "passed",
+    "node24": "passed"
+  }
 }

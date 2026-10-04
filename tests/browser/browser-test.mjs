@@ -136,8 +136,13 @@ with zipfile.ZipFile(sys.argv[1]) as z:
   return path.join(directory, 'run-sheet.html');
 }
 async function noPageOverflow(page) {
-  const sizes = await page.evaluate(() => ({ viewport: innerWidth, width: document.documentElement.scrollWidth }));
-  assert.ok(sizes.width <= sizes.viewport + 1, `Page overflow: ${sizes.width}px at ${sizes.viewport}px`);
+  const sizes = await page.evaluate(() => ({ viewport: innerWidth, width: document.documentElement.scrollWidth,
+    overflowing: [...document.querySelectorAll('body *')].filter(el => el.getBoundingClientRect().right > innerWidth + 1).slice(0, 20).map(el => {
+      const box = el.getBoundingClientRect();
+      const parent = el.parentElement;
+      return { tag: el.tagName, id: el.id, class: el.className, left: Math.round(box.left), right: Math.round(box.right), width: Math.round(box.width), scrollWidth: el.scrollWidth, clientWidth: el.clientWidth, overflowX: getComputedStyle(el).overflowX, parent: parent?.className };
+    }) }));
+  assert.ok(sizes.width <= sizes.viewport + 1, `Page overflow: ${sizes.width}px at ${sizes.viewport}px; ${JSON.stringify(sizes.overflowing)}`);
 }
 async function inputsSnapshot(page) {
   return page.locator('#roles-body input, #roles-body textarea, #appearances-body input, #appearances-body textarea, #appearances-body select, #default, #target, #overrides, #must-share, #never-share').evaluateAll(nodes => nodes.map(n => n.value));
@@ -441,6 +446,18 @@ try {
     await page.locator('#demo30').click();
     await solve(page, 2);
     assert.match(await page.locator('body').innerText(), /役|登場|トラック/);
+    await noPageOverflow(page);
+    for (const selector of ['.appearances-table', '.transition-table']) {
+      const bounds = await page.locator(selector).first().evaluate(table => {
+        const port = table.parentElement;
+        port.scrollLeft = port.scrollWidth;
+        const last = table.querySelector('tr:last-child td:last-child');
+        return { scrollable: port.scrollWidth > port.clientWidth, moved: port.scrollLeft > 0, endVisible: last.getBoundingClientRect().right <= port.getBoundingClientRect().right + 2 };
+      });
+      assert.equal(bounds.scrollable, true, `${selector} keeps a horizontal scrollport`);
+      assert.equal(bounds.moved, true, `${selector} offscreen columns are reachable`);
+      assert.equal(bounds.endVisible, true, `${selector} last column can be viewed`);
+    }
     await noPageOverflow(page);
     await page.screenshot({ path: path.join(artifactDir, 'japanese-mobile-390.png'), fullPage: true });
   }, { viewport: { width: 390, height: 844 } });
