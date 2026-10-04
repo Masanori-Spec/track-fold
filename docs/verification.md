@@ -31,12 +31,18 @@ verified source commit `431b4699ddb2983dbc2516afeda7744a47ce6868`:
   with no cropped table/cue text and repeated headings on the long-table continuation
 - Japanese app at 390px: failed with a 589px document scroll width
 
-The responsive correction keeps intrinsic grid/flex widths bounded and confines
-wide tables/timelines to their own horizontal scrollports. It does not hide overflow
-on the document. The mobile scenario now verifies that the last table columns are
-reachable by scrolling, and records overflow-element diagnostics on any failure.
-Local Node checks still pass after this change. The exact corrected source's hosted
-rerun and mobile screenshot inspection are pending; this is not a final release pass.
+The first width-containment correction did not resolve the failure in
+[run 37204333888](https://github.com/Masanori-Spec/track-fold/actions/runs/37204333888).
+Its layout diagnostics isolated an absolutely positioned, visually hidden header
+label at x=588–589px. Because its containing block was outside the scrolling table,
+the label widened the document even though the visible columns were clipped correctly.
+
+The targeted correction positions each table header relatively, keeping its hidden
+label's containing block inside the scrollport. The mobile regression checks both
+accessible remove-column names, their actual containing blocks, document width and
+scroll access to the last columns. Document-level overflow is never hidden.
+Local Node checks still pass. The exact targeted correction's hosted rerun and
+mobile screenshot inspection are pending; this is not a final release pass.
 
 No local browser or further native LibreOffice execution was attempted after the
 local environment failure. No sandbox weakening or shared browser was used.

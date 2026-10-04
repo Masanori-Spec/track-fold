@@ -1,5 +1,5 @@
 {
-  "source_stage": "responsive correction after initial hosted CI",
+  "source_stage": "targeted accessible-header containment correction",
   "node_tests": {
     "passed": 104,
     "failed": 0
@@ -17,7 +17,7 @@
   },
   "browser": {
     "authored_scenarios": 20,
-    "execution": "Initial hosted CI: 19/20 passed; 390px overflow found. Corrected source rerun pending",
+    "execution": "First two hosted runs: 19/20 passed; diagnostic isolated an offscreen absolute sr-only header label. Targeted containing-block correction rerun pending",
     "sandbox_required": true
   },
   "native_libreoffice": "Initial hosted run passed both actual browser download ZIPs with LibreOffice 7.3.7.2; local native execution remains skipped",
@@ -34,5 +34,12 @@
     "commit": "431b4699ddb2983dbc2516afeda7744a47ce6868",
     "node22": "passed",
     "node24": "passed"
+  },
+  "mobile_diagnosis": {
+    "run": "https://github.com/Masanori-Spec/track-fold/actions/runs/37204333888",
+    "document_width": 589,
+    "viewport_width": 390,
+    "cause": "Absolutely positioned offscreen hidden table-header label lacked an in-scrollport containing block",
+    "fix": "position:relative on table-scroll th; preserve label and scrolling"
   }
 }

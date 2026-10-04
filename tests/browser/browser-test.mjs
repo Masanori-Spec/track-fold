@@ -446,6 +446,13 @@ try {
     await page.locator('#demo30').click();
     await solve(page, 2);
     assert.match(await page.locator('body').innerText(), /役|登場|トラック/);
+    const hiddenHeaders = await page.locator('.table-scroll th .sr-only').evaluateAll(labels => labels.map(label => ({
+      text: label.textContent, contained: label.offsetParent === label.closest('th'),
+      anchorPosition: getComputedStyle(label.closest('th')).position,
+    })));
+    assert.equal(hiddenHeaders.length, 2, 'Both remove-column headers retain their accessible labels');
+    assert.ok(hiddenHeaders.every(label => label.text === '削除' && label.contained && label.anchorPosition === 'relative'), 'Offscreen accessible labels are positioned inside their table header, not the document');
+    assert.equal(await page.getByRole('columnheader', { name: '削除', exact: true }).count(), 2);
     await noPageOverflow(page);
     for (const selector of ['.appearances-table', '.transition-table']) {
       const bounds = await page.locator(selector).first().evaluate(table => {

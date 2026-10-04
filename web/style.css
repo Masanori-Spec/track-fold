@@ -13,3 +13,7 @@ td textarea.cell-text{min-height:34px;height:34px;resize:vertical;padding:7px;li
 .table-scroll,.timeline{width:100%;contain:inline-size;overscroll-behavior-inline:contain}
 input,textarea{min-width:0}
 @media(max-width:700px){.explain,.explain ol{grid-template-columns:minmax(0,1fr)}}
+
+/* Absolutely positioned screen-reader headers must use a containing block
+   inside the scrollport, otherwise an offscreen column can widen the document. */
+.table-scroll th{position:relative}

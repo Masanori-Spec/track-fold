@@ -149,8 +149,9 @@ The [initial hosted run](https://github.com/Masanori-Spec/track-fold/actions/run
 passed both Node/oracle jobs, 19 of 20 browser scenarios, actual-download
 LibreOffice CSV imports and A4 rendering. All ten rendered A4 pages were inspected.
 The remaining scenario exposed document overflow at a 390px Japanese layout. A
-responsive containment fix and offscreen-column access checks are now applied; the
-exact updated source still needs its hosted rerun and mobile screenshot inspection.
+targeted containing-block fix now keeps the visually hidden column headers inside
+their table scrollports; accessibility and offscreen-column access checks cover this
+path. The exact updated source still needs its hosted rerun and mobile inspection.
 No browser sandbox bypass is used. These checks do not validate a real production.
 
 ## Repository status
