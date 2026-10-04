@@ -1,0 +1,235 @@
+{
+  "run": "https://github.com/Masanori-Spec/track-fold/actions/runs/37205149626",
+  "commit": "2997b3dcc9805fce80d89a68fdc3f134b8996165",
+  "browser": {
+    "status": "passed",
+    "sandbox": true,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0,
+    "scenarios": [
+      {
+        "name": "english-keyboard-skip-add-rows",
+        "status": "passed"
+      },
+      {
+        "name": "genuine-worker-three-tracks-and-download",
+        "status": "passed"
+      },
+      {
+        "name": "threshold-equality-one-second-and-direction",
+        "status": "passed"
+      },
+      {
+        "name": "edits-invalidate-witness-and-reset",
+        "status": "passed"
+      },
+      {
+        "name": "genuine-worker-cancel-and-repeated-search",
+        "status": "passed"
+      },
+      {
+        "name": "intermediate-role-nonhereditary-feasibility",
+        "status": "passed"
+      },
+      {
+        "name": "conflicting-group-rules-no-export",
+        "status": "passed"
+      },
+      {
+        "name": "blank-number-is-not-zero",
+        "status": "passed"
+      },
+      {
+        "name": "malformed-and-oversize-import-transactional",
+        "status": "passed"
+      },
+      {
+        "name": "schema-and-self-override-import-rejected",
+        "status": "passed"
+      },
+      {
+        "name": "recipe-import-invalidates-existing-result",
+        "status": "passed"
+      },
+      {
+        "name": "deferred-import-stale-completion-and-same-file-reselect",
+        "status": "passed",
+        "deferredReadCases": 6,
+        "sameFileSelections": 7,
+        "solver": "genuine Worker"
+      },
+      {
+        "name": "hostile-unicode-text-real-zip",
+        "status": "passed"
+      },
+      {
+        "name": "crlf-and-cr-input-canonicalized-to-lf",
+        "status": "passed",
+        "inputLineEndings": [
+          "CRLF",
+          "CR",
+          "LF"
+        ],
+        "canonicalLineEnding": "LF",
+        "download": "line-endings.zip"
+      },
+      {
+        "name": "japanese-mobile-390",
+        "status": "passed"
+      },
+      {
+        "name": "maximum-128-appearances-single-role",
+        "status": "passed"
+      },
+      {
+        "name": "incomplete-result-ui-only",
+        "status": "passed",
+        "evidenceScope": "Injected incomplete result tests UI only; not an engine timeout"
+      },
+      {
+        "name": "standalone-default-fresh-context-print-mobile",
+        "status": "passed"
+      },
+      {
+        "name": "standalone-hostile-fresh-context-print-mobile",
+        "status": "passed"
+      },
+      {
+        "name": "offline-file-app-genuine-blob-worker",
+        "status": "passed"
+      }
+    ]
+  },
+  "native": {
+    "standard": {
+      "status": "passed",
+      "bundle_sha256": "67b0643be95bffd7301d146d8be8fef265e4a10f3c49b00e13d5369bb6ec1831",
+      "version": "LibreOffice 7.3.7.2 30(Build:2)",
+      "files": [
+        {
+          "status": "passed",
+          "file": "native/role-tracks.xlsx",
+          "rows_including_header": 5,
+          "columns": 4,
+          "xml_cells": 20,
+          "formula_cells": 0,
+          "all_values_preserved_as_text": true,
+          "sha256": "f0b4578f181660b054079b7c7d879c4bd1342540c76062e7da52243f703d40f5",
+          "source_csv": "role-tracks.csv",
+          "import_filter_options": "44,34,76,1,1/2/2/2/3/2/4/2,0,true,false,false,false,false,0,false,false,false",
+          "stdout": "convert /tmp/trackfold-native-202azxku/role-tracks.csv -> /tmp/trackfold-native-202azxku/converted/role-tracks.xlsx using filter : Calc MS Excel 2007 XML",
+          "stderr": "Warning: failed to launch javaldx - java may not function correctly\nUnable to revert mtime: /usr/share/fonts\nUnable to revert mtime: /usr/share/fonts/truetype\nUnable to revert mtime: /usr/share/fonts/truetype/dejavu\nUnable to revert mtime: /usr/share/fonts/truetype/lato\nUnable to revert mtime: /usr/share/fonts/truetype/liberation\nUnable to revert mtime: /usr/share/fonts/truetype/noto"
+        },
+        {
+          "status": "passed",
+          "file": "native/track-appearances.xlsx",
+          "rows_including_header": 6,
+          "columns": 6,
+          "xml_cells": 36,
+          "formula_cells": 0,
+          "all_values_preserved_as_text": true,
+          "sha256": "58c25cb5e9ec11e812c6f32e45244aefc5b1770fc9c143fd2d1aab7856047e14",
+          "source_csv": "track-appearances.csv",
+          "import_filter_options": "44,34,76,1,1/2/2/2/3/2/4/2/5/2/6/2,0,true,false,false,false,false,0,false,false,false",
+          "stdout": "convert /tmp/trackfold-native-202azxku/track-appearances.csv -> /tmp/trackfold-native-202azxku/converted/track-appearances.xlsx using filter : Calc MS Excel 2007 XML",
+          "stderr": "Warning: failed to launch javaldx - java may not function correctly"
+        },
+        {
+          "status": "passed",
+          "file": "native/track-transitions.xlsx",
+          "rows_including_header": 3,
+          "columns": 10,
+          "xml_cells": 30,
+          "formula_cells": 0,
+          "all_values_preserved_as_text": true,
+          "sha256": "c2b4e88974f6e0d4c8c636f5926832844b7b3dab3c1a824e45d5a758bf0272c6",
+          "source_csv": "track-transitions.csv",
+          "import_filter_options": "44,34,76,1,1/2/2/2/3/2/4/2/5/2/6/2/7/2/8/2/9/2/10/2,0,true,false,false,false,false,0,false,false,false",
+          "stdout": "convert /tmp/trackfold-native-202azxku/track-transitions.csv -> /tmp/trackfold-native-202azxku/converted/track-transitions.xlsx using filter : Calc MS Excel 2007 XML",
+          "stderr": "Warning: failed to launch javaldx - java may not function correctly"
+        }
+      ]
+    },
+    "adversarial": {
+      "status": "passed",
+      "bundle_sha256": "a2916cd336be3c8312286db78ae39ae7eaef2b447f0c5afb2c676ced46e36ac5",
+      "version": "LibreOffice 7.3.7.2 30(Build:2)",
+      "files": [
+        {
+          "status": "passed",
+          "file": "native/role-tracks.xlsx",
+          "rows_including_header": 5,
+          "columns": 4,
+          "xml_cells": 20,
+          "formula_cells": 0,
+          "all_values_preserved_as_text": true,
+          "sha256": "e07f0824a9c65084f7b9ce779e09afc30423bd730b15895fafabb5760373212f",
+          "source_csv": "role-tracks.csv",
+          "import_filter_options": "44,34,76,1,1/2/2/2/3/2/4/2,0,true,false,false,false,false,0,false,false,false",
+          "stdout": "convert /tmp/trackfold-native-mhurf9oa/role-tracks.csv -> /tmp/trackfold-native-mhurf9oa/converted/role-tracks.xlsx using filter : Calc MS Excel 2007 XML",
+          "stderr": "Warning: failed to launch javaldx - java may not function correctly"
+        },
+        {
+          "status": "passed",
+          "file": "native/track-appearances.xlsx",
+          "rows_including_header": 6,
+          "columns": 6,
+          "xml_cells": 36,
+          "formula_cells": 0,
+          "all_values_preserved_as_text": true,
+          "sha256": "08edc080e04b907164792caad0daabd3adece5412784924faa3d4048b5f33bb7",
+          "source_csv": "track-appearances.csv",
+          "import_filter_options": "44,34,76,1,1/2/2/2/3/2/4/2/5/2/6/2,0,true,false,false,false,false,0,false,false,false",
+          "stdout": "convert /tmp/trackfold-native-mhurf9oa/track-appearances.csv -> /tmp/trackfold-native-mhurf9oa/converted/track-appearances.xlsx using filter : Calc MS Excel 2007 XML",
+          "stderr": "Warning: failed to launch javaldx - java may not function correctly"
+        },
+        {
+          "status": "passed",
+          "file": "native/track-transitions.xlsx",
+          "rows_including_header": 4,
+          "columns": 10,
+          "xml_cells": 40,
+          "formula_cells": 0,
+          "all_values_preserved_as_text": true,
+          "sha256": "b3ca6bd722f82203463a233efee9eec9f41adb413f24ed3bfe5a0370c1b866e5",
+          "source_csv": "track-transitions.csv",
+          "import_filter_options": "44,34,76,1,1/2/2/2/3/2/4/2/5/2/6/2/7/2/8/2/9/2/10/2,0,true,false,false,false,false,0,false,false,false",
+          "stdout": "convert /tmp/trackfold-native-mhurf9oa/track-transitions.csv -> /tmp/trackfold-native-mhurf9oa/converted/track-transitions.xlsx using filter : Calc MS Excel 2007 XML",
+          "stderr": "Warning: failed to launch javaldx - java may not function correctly"
+        }
+      ]
+    }
+  },
+  "visual_review": {
+    "desktop_and_mobile": "Inspected normal and horizontally scrolled screenshots",
+    "print_page_count": 10,
+    "all_print_pngs_byte_identical_to_initial_visually_inspected_pages": true
+  },
+  "screenshots": {
+    "desktop-three-tracks.png": {
+      "bytes": 279053,
+      "sha256": "17e67ccf4a6b76f2beca446da8f9b4a315f9e1237a9391c766367820713e59ad"
+    },
+    "japanese-mobile-390.png": {
+      "bytes": 288702,
+      "sha256": "41c055a034837a1acac1d38198fc3582fef6a7228fe3751488841548af349c3e"
+    },
+    "japanese-mobile-390-scrolled.png": {
+      "bytes": 286818,
+      "sha256": "83796d6118c6d05046b367a6cf1c3ef852bb51abb9c741afcefef02be0c2b5d0"
+    }
+  },
+  "print_png_sha256": {
+    "downloaded-1.png": "606389b10463a03d937d8d57f06826c13a98a40a83cc7b7057d6d068892d5c03",
+    "downloaded-2.png": "710cb888478badef62dd044acead8a1f49145faf32ee35c27ffece28c5c96ca4",
+    "downloaded-3.png": "8cb1cae635642603abd5349ee63aa67332aedda56c7fc91c3f261d086134d519",
+    "downloaded-4.png": "0bbec755b903e2f68565ae61365640658b414566f1b131edd74734473666dd1a",
+    "downloaded-5.png": "4a6019025efef21adbc03e41afe4368e1e555917b0f66535a882128c4b1d2d0f",
+    "hostile-text-1.png": "cb11f533aa37fcfc9245990fba0bf039e79ed657f42e4130cfe97389d617eb90",
+    "hostile-text-2.png": "a285e78c5e9c30e5103c49993c318b6dc4b965421e0e39a2562e510452243fad",
+    "hostile-text-3.png": "91b0ecf4a036de27488a3a91fe0e3fc6997292b561c48a7199db9f0aef23adae",
+    "hostile-text-4.png": "ef5917337b049cd41709e09191221d5f796becb9831761dc3127cc6dd34fda03",
+    "hostile-text-5.png": "b8a227b69d2afa9881016b660ed89513b9e1973205ad63217ce9e03d562760cd"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "source_stage": "explicit remove-column header semantics correction",
+  "source_stage": "hosted verification complete; evidence-only documentation update",
   "node_tests": {
     "passed": 104,
     "failed": 0
@@ -10,24 +10,29 @@
   "oracle_expanded_seed_42": {
     "passed": 3244
   },
-  "consumer_standard": "passed semantic/HTML; native explicitly skipped",
-  "consumer_adversarial": "passed semantic/HTML; native explicitly skipped",
+  "consumer_standard": "passed semantic/HTML and native LibreOffice from actual browser download",
+  "consumer_adversarial": "passed semantic/HTML and native LibreOffice from actual browser download",
   "consumer_corruption_controls": {
     "rejected": 19
   },
   "browser": {
     "authored_scenarios": 20,
-    "execution": "Third hosted run: containing-block checks passed and screenshot width390; header accessible-name lookup failed. Explicit scope/role/localized-label correction rerun pending",
-    "sandbox_required": true
+    "execution": "Passed 20/20 on verified hosted run",
+    "sandbox_required": true,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0
   },
-  "native_libreoffice": "Initial hosted run passed both actual browser download ZIPs with LibreOffice 7.3.7.2; local native execution remains skipped",
-  "visual_review": "All ten initial A4 pages inspected; corrected mobile screenshot pending",
+  "native_libreoffice": "Both actual browser download ZIPs passed LibreOffice 7.3.7.2; all six CSV imports retained all cells as text, zero formula cells",
+  "visual_review": "Desktop, normal/scrolled Japanese390px and standalone screenshots inspected; ten final A4 PNGs byte-identical to all ten visually inspected pages",
   "publication": "Source repository published for CI; no hosted app deployment",
   "project_license": "not selected",
   "review_fixes": [
     "Malformed UTF-16 rejected",
     "Stale import success/failure ignored; input immediately cleared for reselection",
-    "CRLF and CR canonicalized to LF across model and handoff"
+    "CRLF and CR canonicalized to LF across model and handoff",
+    "Offscreen hidden headers contained within table scrollports",
+    "Explicit column scope/role/localized accessible names"
   ],
   "initial_ci": {
     "url": "https://github.com/Masanori-Spec/track-fold/actions/runs/37203726116",
@@ -48,5 +53,14 @@
     "containing_block_assertions": "passed",
     "role_name_query": "failed 0 matches instead of2",
     "correction": "Explicit scope=col, columnheader role and translated aria-label; hidden text preserved"
+  },
+  "verified_ci": {
+    "url": "https://github.com/Masanori-Spec/track-fold/actions/runs/37205149626",
+    "commit": "2997b3dcc9805fce80d89a68fdc3f134b8996165",
+    "status": "success",
+    "jobs_passed": 3,
+    "node22": "passed",
+    "node24": "passed",
+    "browser_and_real_consumers": "passed"
   }
 }

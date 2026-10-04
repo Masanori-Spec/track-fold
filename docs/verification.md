@@ -13,9 +13,34 @@ Local source-stage verification on 2026-10-04:
   corrupted bundles were rejected. Native LibreOffice has not passed locally: its
   first conversion exited 137, followed by an executor rollback. The source was
   restored and the full Node/oracle/semantic suites rerun. Later local consumers
-  explicitly used --skip-libreoffice; native conversion is a required CI gate
+  explicitly used --skip-libreoffice; native conversion subsequently passed in hosted CI
 - Performance bounds: operation/time budget paths tested; no universal device
   responsiveness or completion-time guarantee is claimed
+
+## Completed hosted verification
+
+[Run 37205149626](https://github.com/Masanori-Spec/track-fold/actions/runs/37205149626) passed all three jobs for
+commit `2997b3dcc9805fce80d89a68fdc3f134b8996165` on Ubuntu 22.04:
+
+- Node 22 and 24: 104 tests each, plus 1,183 default and 3,244 expanded independent
+  oracle cases on each job
+- Sandbox-enabled Chromium: 20 passed, 0 failed, 0 skipped, including the real-worker
+  offline file workflow, async import races and canonical line endings
+- Japanese 390px layout: document-width, scoped hidden-header, accessible-name and
+  last-column scrolling assertions passed. Normal and horizontally scrolled
+  screenshots were inspected; there is no page-level horizontal overflow
+- Both actual browser-downloaded standard/hostile ZIPs: Python semantic checks and
+  LibreOffice 7.3.7.2 imports passed for all three CSVs in each bundle, with all cell
+  values preserved as text and zero formula cells
+- Desktop and standalone output screenshots were inspected. All ten final A4 PNGs
+  are byte-identical to the ten previously visually inspected pages, including the
+  long table continuation with repeated headings; no cropped table/cue text
+
+The screenshot files and compact hash-backed evidence summary are under
+`docs/evidence/`. These results verify the bounded synthetic workflow and supported
+file consumers. Real production timing, practical quick changes and casting quality
+remain outside the verified scope. No local browser or further native LibreOffice
+process was launched during these hosted reruns.
 
 ## Initial hosted CI and responsive correction
 
@@ -50,8 +75,7 @@ their hidden text. Both English and Japanese role/name lookups are regression-ch
 The mobile test records a normal screenshot before scrolling, a second after reaching
 the last columns, and detailed header diagnostics on any failure. Document-level
 overflow is never hidden. Local Node checks still pass; the exact semantic correction
-and final width/accessibility assertions await hosted rerun. This is not a final
-release pass.
+and final width/accessibility assertions passed in the completed run below.
 
 No local browser or further native LibreOffice execution was attempted after the
 local environment failure. No sandbox weakening or shared browser was used.

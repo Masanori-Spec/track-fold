@@ -145,15 +145,26 @@ python3 tests/consume.py --bundle test-results/local/handoff.zip --out test-resu
 
 See [oracle method](docs/oracle-method.md), [consumer method](docs/consumer-method.md),
 [verification status](docs/verification.md) and [security scope](SECURITY.md).
-The [initial hosted run](https://github.com/Masanori-Spec/track-fold/actions/runs/37203726116)
-passed both Node/oracle jobs, 19 of 20 browser scenarios, actual-download
-LibreOffice CSV imports and A4 rendering. All ten rendered A4 pages were inspected.
-The remaining scenario exposed document overflow at a 390px Japanese layout. A
-targeted containing-block fix keeps the visually hidden column headers inside
-their table scrollports. A subsequent accessibility check prompted explicit column
-scopes, roles and localized names for the remove headers. The exact updated source
-still needs its hosted width/accessibility rerun and mobile inspection.
-No browser sandbox bypass is used. These checks do not validate a real production.
+The [verified hosted run](https://github.com/Masanori-Spec/track-fold/actions/runs/37205149626) passed all three jobs for
+commit `2997b3dcc9805fce80d89a68fdc3f134b8996165`: 104 Node tests on both Node 22/24, both independent
+oracle corpora, **20/20 browser scenarios with zero skips**, and native LibreOffice
+imports of the actual browser downloads. Desktop, normal/scrolled 390px mobile and
+all ten A4 pages were inspected. The mobile overflow and header-accessibility defects
+found in earlier runs are resolved. No browser sandbox bypass is used.
+
+These checks verify the supported synthetic workflow; they do not validate an
+actual production's timing, physical quick changes or casting suitability.
+
+### Verified screenshots
+
+Actual screenshots from the linked successful run, using only synthetic data.
+
+<img src="docs/evidence/desktop-three-tracks.png" width="640" alt="TrackFold desktop showing the synthetic three-track result and transition tables">
+
+<details>
+<summary>Japanese mobile layout at 390px</summary>
+<img src="docs/evidence/japanese-mobile-390.png" width="390" alt="TrackFold Japanese mobile interface with a two-track result; wide tables scroll within their panels">
+</details>
 
 ## Repository status
 
